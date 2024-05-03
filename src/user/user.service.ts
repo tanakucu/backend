@@ -131,5 +131,4 @@ async updateTable(id: number, payload: TableDto, updatedBy: string): Promise<boo
   }
 }
   
-  
 }
