@@ -1,16 +1,19 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
 
-@Entity('history_logs')
+@Entity('log_item_collection')
 export class HistoryLog {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  user_id: string;
-
-  @Column()
   action: string;
 
   @Column()
-  created_at: Date;
+  detail_id: number;
+
+  @CreateDateColumn()
+  createdDate: Date;
+
+  @Column()
+  username: string;
 }

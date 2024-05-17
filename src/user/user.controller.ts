@@ -19,6 +19,7 @@ export class UserController {
         return {status: 'failed'};
       }
   }
+
   @Get('historyLog')
   async getHistoryLog(@Query('username') username: string): Promise<HistoryLog[]> {
     if (username === 'admin') {
@@ -35,6 +36,7 @@ export class UserController {
 
   @Post('insertTable')
   async insertTable(@Body() payload : TableDto){
+    console.log('Received payload:', payload);
     var response = {
       message : "failed"
     };
@@ -44,41 +46,42 @@ export class UserController {
     }
     return response;
   }
+  
 
-@Delete('deleteTable/:id')
-async deleteTable(
-  @Param('id') id: number,
-  @Body('username') username: string
-): Promise<{ message: string }> {
-  const response = { message: 'failed' };
-  try {
-    const result = await this.userService.deleteTable(id, username);
-    if (result) {
-      await this.userService.logHistoryAction('delete', id, username);
-      response.message = 'success';
+  @Delete('deleteTable/:id')
+  async deleteTable(
+    @Param('id') id: number,
+    @Body('username') username: string
+  ): Promise<{ message: string }> {
+    const response = { message: 'failed' };
+    try {
+      const result = await this.userService.deleteTable(id, username);
+      if (result) {
+        await this.userService.logHistoryAction('delete', id, username);
+        response.message = 'success';
+      }
+    } catch (error) {
+      console.error('Error deleting table entry:', error);
     }
-  } catch (error) {
-    console.error('Error deleting table entry:', error);
+    return response;
   }
-  return response;
-}
 
-@Put('updateTable/:id')
-async updateTable(
-  @Param('id') id: number,
-  @Body() payload: TableDto,
-  @Body('username') username: string 
-): Promise<{ message: string }> {
-  const response = { message: 'failed' };
-  try {
-    const result = await this.userService.updateTable(id, payload, username);
-    if (result) {
-      await this.userService.logHistoryAction('update', id, username, payload);
-      response.message = 'success';
+  @Put('updateTable/:id')
+  async updateTable(
+    @Param('id') id: number,
+    @Body() payload: TableDto,
+    @Body('username') username: string 
+  ): Promise<{ message: string }> {
+    const response = { message: 'failed' };
+    try {
+      const result = await this.userService.updateTable(id, payload, username);
+      if (result) {
+        await this.userService.logHistoryAction('update', id, username);
+        response.message = 'success';
+      }
+    } catch (error) {
+      console.error('Error updating table entry:', error);
     }
-  } catch (error) {
-    console.error('Error updating table entry:', error);
+    return response;
   }
-  return response;
-}
 }
