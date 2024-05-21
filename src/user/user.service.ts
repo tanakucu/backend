@@ -97,7 +97,6 @@ export class UserService {
       logEntry.username = deletedBy;
       logEntry.detail_id = id;
       await this.historyLogRepository.save(logEntry);
-
       return true;
     } catch (error) {
       console.error('Error logging delete action:', error);
@@ -112,7 +111,6 @@ export class UserService {
         console.error('Entry not found.');
         return false;
       }
-
 
       const { createdDate } = existingEntry;
       Object.assign(existingEntry, payload);

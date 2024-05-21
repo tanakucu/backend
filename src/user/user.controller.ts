@@ -53,9 +53,11 @@ export class UserController {
     @Param('id') id: number,
     @Body('username') username: string
   ): Promise<{ message: string }> {
+    console.log(`Received request to delete entry with ID: ${id} by user: ${username}`);
     const response = { message: 'failed' };
     try {
       const result = await this.userService.deleteTable(id, username);
+      console.log(`Delete table result: ${result}`);
       if (result) {
         await this.userService.logHistoryAction('delete', id, username);
         response.message = 'success';
@@ -72,9 +74,11 @@ export class UserController {
     @Body() payload: TableDto,
     @Body('username') username: string 
   ): Promise<{ message: string }> {
+    console.log(`Received request to update entry with ID: ${id} by user: ${username}`);
     const response = { message: 'failed' };
     try {
       const result = await this.userService.updateTable(id, payload, username);
+      console.log(`Update table result: ${result}`);
       if (result) {
         await this.userService.logHistoryAction('update', id, username);
         response.message = 'success';
