@@ -59,7 +59,7 @@ export class UserController {
       const result = await this.userService.deleteTable(id, username);
       console.log(`Delete table result: ${result}`);
       if (result) {
-        await this.userService.logHistoryAction('delete', id, username);
+        
         response.message = 'success';
       }
     } catch (error) {
@@ -80,7 +80,7 @@ export class UserController {
       const result = await this.userService.updateTable(id, payload, username);
       console.log(`Update table result: ${result}`);
       if (result) {
-        await this.userService.logHistoryAction('update', id, username);
+        
         response.message = 'success';
       }
     } catch (error) {

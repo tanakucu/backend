@@ -91,12 +91,14 @@ export class UserService {
       }
       entryToDelete.modifiedDate = new Date('2100-01-01');
       await this.tableRepository.save(entryToDelete);
-
+      
       const logEntry = new HistoryLog();
       logEntry.action = 'delete';
       logEntry.username = deletedBy;
       logEntry.detail_id = id;
       await this.historyLogRepository.save(logEntry);
+      console.log('History action logged successfully.');
+
       return true;
     } catch (error) {
       console.error('Error logging delete action:', error);
@@ -126,6 +128,7 @@ export class UserService {
       logEntry.detail_id = id;
       logEntry.createdDate = new Date();
       await this.historyLogRepository.save(logEntry);
+      console.log('History action logged successfully.');
 
       return true;
     } catch (error) {
