@@ -1,4 +1,4 @@
-import { Entity , PrimaryGeneratedColumn , Column} from "typeorm";
+import { Entity , PrimaryGeneratedColumn , Column, CreateDateColumn, UpdateDateColumn} from "typeorm";
 
 @Entity({
     name : 'users'
@@ -10,14 +10,14 @@ export class UsersEntity {
     @Column({nullable : true})
     username : string;
 
-      @Column({nullable : true})
+    @Column({nullable : true})
     password : string;
 
-      @Column({nullable : true})
-    created_date : Date;
-    
-      @Column({nullable : true})
-    modified_date : Date
+    @CreateDateColumn()
+    createdDate: Date;
+
+    @UpdateDateColumn()
+    modifiedDate: Date;
 
     @Column({nullable: true})
     role: string;

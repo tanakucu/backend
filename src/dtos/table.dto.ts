@@ -1,88 +1,89 @@
-import {
-    IsDate,
-    IsNotEmpty,
-    IsString,
-  } from 'class-validator';
-   
-  export class TableDto {
-    @IsNotEmpty()
-    @IsDate()
-    date: Date;
-  
-    @IsNotEmpty()
-    @IsString()
-    owner: string;
-  
-    @IsNotEmpty()
-    @IsString()
-    department: string;
-  
-    @IsNotEmpty()
-    @IsString()
-    complain: string;
-  
-    @IsNotEmpty()
-    @IsString()
-    barcode: string;
-  
-   @IsNotEmpty()
-   @IsString()
-  type : string;
+import { IsDate, IsNotEmpty, IsString} from 'class-validator';
+import { Type } from 'class-transformer';
+
+export class TableDto {
+  @IsNotEmpty()
+  @IsDate()
+  @Type(() => Date)
+  date: Date;
   
   @IsNotEmpty()
   @IsString()
-  model : string;
-  
+  owner: string;
+
   @IsNotEmpty()
   @IsString()
-  serviceTag : string;
-  
+  department: string;
+
   @IsNotEmpty()
   @IsString()
-  storage : string;
-  
+  complain: string;
+
   @IsNotEmpty()
   @IsString()
-  ram : string;
-  
+  barcode: string;
+
   @IsNotEmpty()
   @IsString()
-  cpu : string;
-  
+  type: string;
+
   @IsNotEmpty()
   @IsString()
-  mac : string;
-  
+  model: string;
+
   @IsNotEmpty()
   @IsString()
-  os : string;
-  
+  serviceTag: string;
+
   @IsNotEmpty()
   @IsString()
-  pcName : string;
-  
+  storage: string;
+
   @IsNotEmpty()
   @IsString()
-  powerSupply : string;
-  
+  ram: string;
+
   @IsNotEmpty()
   @IsString()
-  user : string;
-  
+  cpu: string;
+
+  @IsNotEmpty()
+  @IsString()
+  mac: string;
+
+  @IsNotEmpty()
+  @IsString()
+  os: string;
+
+  @IsNotEmpty()
+  @IsString()
+  pcName: string;
+
+  @IsNotEmpty()
+  @IsString()
+  powerSupply: string;
+
+  @IsNotEmpty()
+  @IsString()
+  user: string;
+
   @IsNotEmpty()
   @IsString()
   operation: string;
-  
+
   @IsNotEmpty()
   @IsString()
-  description : string;
-  
+  description: string;
+
   @IsNotEmpty()
-   @IsString()
-  demand : string;
-  
-  @IsNotEmpty()
-   @IsString()
-  updatedBy: string;
-  }
-   
+  @IsString()
+  demand: string;
+
+  @IsDate()
+  @Type(() => Date)
+  createdDate: Date;
+
+  @IsDate()
+  @Type(() => Date)
+  modifiedDate: Date;
+}
