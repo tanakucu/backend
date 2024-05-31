@@ -1,81 +1,81 @@
-import { IsDate, IsNotEmpty, IsString} from 'class-validator';
+import { IsDate, IsOptional, IsString} from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class TableDto {
-  @IsNotEmpty()
+  @IsOptional()
   @IsDate()
   @Type(() => Date)
   date: Date;
   
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   owner: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   department: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   complain: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   barcode: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   type: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   model: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   serviceTag: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   storage: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   ram: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   cpu: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   mac: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   os: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   pcName: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   powerSupply: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   user: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   operation: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   description: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   demand: string;
 
